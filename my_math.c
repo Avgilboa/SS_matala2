@@ -1,6 +1,18 @@
 #include "my_math.h"
 #include <stdio.h>
 
+void print(int arr[0][10])
+{
+    for(int i=0;i<10;i++)
+    {
+        for (int j=0; j<10;j++)
+        {
+            printf(" %d ," ,arr[i][j]);
+        }
+        printf("\n");
+    }
+    return;
+}
 void A(int arr[][10])
 {
     for(int i=0;i<10;i++)
@@ -8,11 +20,12 @@ void A(int arr[][10])
         for (int j=0; j<10;j++)
         {
             int value;
-            if(scanf("%d", &value)==1);
+            scanf("%d", &value);
             arr[i][j] = value;
         }
     }
-    findBest(arr, 0);
+    //print(arr);
+    findBest(arr,0);
 }
 
 int Min(int n1, int n2)
@@ -25,7 +38,7 @@ int Min(int n1, int n2)
 }
 void findBest(int arr[][10], int k)
 {
-    while(k<10)
+    while(k < 10)
     {
         for(int i=0;i<10;i++)  //Lines
         {
@@ -40,6 +53,7 @@ void findBest(int arr[][10], int k)
         }
         k++;
     }
+    //print(arr);
 }
 
 void B(int arr[][10] ,int i, int j)
@@ -55,7 +69,7 @@ void B(int arr[][10] ,int i, int j)
 
 void C (int value)
 {
-       if(value==0)
+    if(value==0)
     {
         printf("%d\n",-1);
         return;
