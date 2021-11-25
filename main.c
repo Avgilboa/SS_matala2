@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "my_math.h"
 
+#define N 10
+
 int main()
 {
-    int arr[10][10] ={0};
+    int arr[N][N] ={0};
     char temp =0;
     do{
         scanf("%c", &temp);

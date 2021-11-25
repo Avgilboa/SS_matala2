@@ -1,11 +1,13 @@
 #include "my_math.h"
 #include <stdio.h>
 
-void print(int arr[0][10])
+#define N 10
+
+void print(int arr[0][N])
 {
-    for(int i=0;i<10;i++)
+    for(int i=0;i<N;i++)
     {
-        for (int j=0; j<10;j++)
+        for (int j=0; j<N;j++)
         {
             printf(" %d ," ,arr[i][j]);
         }
@@ -13,11 +15,11 @@ void print(int arr[0][10])
     }
     return;
 }
-void A(int arr[][10])
+void A(int arr[][N])
 {
-    for(int i=0;i<10;i++)
+    for(int i=0;i<N;i++)
     {
-        for (int j=0; j<10;j++)
+        for (int j=0; j<N;j++)
         {
             int value;
             scanf("%d", &value);
@@ -30,25 +32,37 @@ void A(int arr[][10])
 
 int Min(int n1, int n2)
 {
+    if(n2==0)
+    {
+        return n1;
+    }
+    else{
+        if(n1==0)
+        {
+            return n2;
+        }
+    }
     if(n1>n2)
     {
         return n2;
     }
     return n1;
 }
-void findBest(int arr[][10], int k)
+void findBest(int arr[][N], int k)
 {
-    while(k < 10)
+    while(k < N)
     {
-        for(int i=0;i<10;i++)  //Lines
+        for(int i=0;i<N;i++)  //Lines
         {
-            for (int j=0; j<10;j++) //colums
+            for (int j=0; j<N;j++) //colums
             {
-              if(i==j || i==k || j==k)  //dont want to touch the colum and line of k and when its the road from node to himself
+              if(i==j || i==k || j==k || arr[i][k]==0 || arr[k][j]==0)  //dont want to touch the colum and line of k and when its the road from node to himself
                 {
                     continue;
                 }
-                arr[i][j] =Min(arr[i][j],(arr[i][k]+arr[k][j]));
+                else{
+                    arr[i][j] =Min(arr[i][j],(arr[i][k]+arr[k][j]));
+                    }
             }
         }
         k++;
@@ -56,7 +70,7 @@ void findBest(int arr[][10], int k)
     //print(arr);
 }
 
-void B(int arr[][10] ,int i, int j)
+void B(int arr[][N] ,int i, int j)
 {
     if(arr[i][j]==0)
     {
